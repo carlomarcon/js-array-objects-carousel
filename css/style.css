@@ -14,13 +14,14 @@
 
 .items {
   position: relative;
-  width: 700px;
+
   height: 300px;
   margin: 0 auto;
 }
 
 .item {
   height: 100%;
+  width: 100%;
   display: none;
   position: relative;
 }
@@ -30,9 +31,9 @@
 }
 
 .item img {
-  width: 100%;
+  width: 90%%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .item.active {
@@ -52,6 +53,11 @@
   height: calc((300px) / 5);
   opacity: 0.5;
 }
+
+/* .thumb:hover img {
+  background: red;
+  border-radius: 100%;
+} */
 
 .thumb img {
   width: 100%;
@@ -112,4 +118,8 @@
   bottom: 35%;
   left: 50%;
   transform: translate(-50%) rotate(135deg);
+}
+
+.Idea {
+  z-index: 0;
 }

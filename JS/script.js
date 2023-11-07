@@ -1,9 +1,10 @@
 const buttonUp = document.querySelector(".prev");
 const buttonDown = document.querySelector(".next");
 let ImgDiv = document.querySelector(".items");
-let thumb = document.createElement("div");
-thumb.classList.add("thumbs");
-ImgDiv.append(thumb);
+let Imgs2 = document.createElement("div");
+let Container = document.querySelector(".container");
+Imgs2.classList.add("thumbs");
+ImgDiv.append(Imgs2);
 let Insert = "";
 let InsertThumb = "";
 
@@ -37,23 +38,67 @@ const images = [
   },
 ];
 
+// let DescriptionText = (document.createElement("h2").innerHTML =
+//   images[1].title);
+// console.log(DescriptionText);
+
+let DescriptionText = document.createElement("h2");
+
+// images.forEach((element) => {
+//   let DescriptionText = (document.createElement("h2").innerHTML =
+//     element.title);
+
+//   ImgDiv.prepend(DescriptionText);
+
+//   console.log(DescriptionText);
+// });
+
 for (let i = 0; i < images.length; i++) {
-  let CurrentImage =
-    "<div class='item'> <img  src='" + images[i].image + "' /></div>";
+  let CurrentImage = `<div class='item'> <img  src=' ${images[i].image} ' />
+   <div class="Idea" style="padding-right:10rem; position:relative; bottom:35%; color:white; ">
+    <h2>${images[i].title}</h2>
+    <p>${images[i].text}</p>
+    </div>
+    </div>`;
 
   Insert += CurrentImage;
 }
 
-// stesso per thumb
+// THUMB CYCLE
 
 for (let i = 0; i < images.length; i++) {
-  let currentImage2 =
-    "<div class='thumb'><img src='" + images[i].image + "'/></div>";
+  const thumb = document.createElement("div");
+  thumb.classList.add("thumb");
 
-  InsertThumb += currentImage2;
+  const image = document.createElement("img");
+  image.src = images[i].image;
+
+  thumb.append(image);
+
+  Imgs2.append(thumb);
+  // let currentImage2 =
+  //   "<div class='thumb'><img src='" + images[i].image + "'/></div>";
+
+  // InsertThumb += currentImage2;
 }
 
-thumb.innerHTML = InsertThumb;
+// Imgs2.innerHTML = InsertThumb;
+
+setTimeout(() => {
+  document.querySelectorAll(".thumb").forEach((elem) => {
+    elem.addEventListener("click", () => {
+      let DescriptionText = document.createElement("h2");
+      elem.classList.add("active");
+      let Idea = document.getElementsByClassName(".Idea");
+      console.log(Idea);
+    });
+  });
+}, 1);
+
+// Imgs2.querySelector("div").addEventListener("click", function () {
+//   this.classList.add(".active");
+//   console.log("ei");
+// });
 
 ImgDiv.innerHTML += Insert;
 document.getElementsByClassName("item")[0].classList.add("active");
